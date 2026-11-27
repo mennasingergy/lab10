@@ -6,7 +6,8 @@ export const options = {
     stages: [
         { duration: "10s", target: 200 },  // heavy but usually OK
         { duration: "10s", target: 500 },  // getting intense
-        { duration: "10s", target: 1000 }, // near breaking point
+        { duration: "20s", target: 500 },  // Sustained load
+        { duration: "10s", target: 0 }, // gradually reduce load to find the breaking point
     ],
 };
 
@@ -16,4 +17,5 @@ export default function () {
     check(res, {
         "status 200": (r) => r.status === 200,
     });
+    sleep(1);
 }
